@@ -12,12 +12,13 @@ import java.sql.*;
  */
 public class DatabaseConnection {
 
-//    public Connection connection;
+    private Connection connection;
+
     private static DatabaseConnection instance;
 
     private DatabaseConnection() throws SQLException {
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/septembar21", "root", "");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost/septembar21", "root", "");
             System.out.println("Konekcija sa bazom uspostavljena");
             connection.setAutoCommit(false);
         } catch (SQLException e) {
@@ -32,5 +33,9 @@ public class DatabaseConnection {
             instance = new DatabaseConnection();
         }
         return instance;
+    }
+
+    public Connection getConnection() {
+        return connection;
     }
 }

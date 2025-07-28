@@ -4,6 +4,10 @@
  */
 package server;
 
+import controller.Controller;
+import db.DatabaseBroker;
+import db.DatabaseConnection;
+import domain.Upravnik;
 import java.net.ServerSocket;
 import java.net.Socket;
 import komunikacija.Receiver;
@@ -18,12 +22,12 @@ import komunikacija.Sender;
 public class Server {
 
     ServerSocket serverSocket;
+    private Sender sender;
+    private Receiver receiver;
+    Controller controller;
 
     public Server() {
-    }
-
-    public Server(ServerSocket serverSocket) {
-        this.serverSocket = serverSocket;
+        controller = new Controller();
     }
 
     public void startServer() {
@@ -32,15 +36,16 @@ public class Server {
             System.out.println("Waiting for conn!");
             Socket clientSocket = serverSocket.accept();
             System.out.println("Connected!");
-            Sender sender = new Sender(clientSocket);
-            Receiver receiver = new Receiver(clientSocket);
+            sender = new Sender(clientSocket);
+            receiver = new Receiver(clientSocket);
 
             while (true) {
                 Request request = (Request) receiver.receive();
                 Response response = new Response();
                 switch (request.getOperation()) {
                     case Login:
-                        //TODO
+                        Upravnik upravnik = controller.login((Upravnik) request.getArgument());
+                        response.setResult(upravnik);
                         break;
                     default:
                         throw new AssertionError();

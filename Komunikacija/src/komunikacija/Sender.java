@@ -19,7 +19,7 @@ public class Sender {
     public Sender() {
     }
 
-    public Sender(Socket socekt) {
+    public Sender(Socket socket) {
         this.socket = socket;
     }
 

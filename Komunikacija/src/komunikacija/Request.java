@@ -4,11 +4,14 @@
  */
 package komunikacija;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Ognjen
  */
-public class Request {
+public class Request implements Serializable {
+
     private Operacija operation;
     private Object argument;
 
@@ -40,6 +43,5 @@ public class Request {
     public String toString() {
         return "Request{" + "operation=" + operation + ", argument=" + argument + '}';
     }
-    
-    
+
 }

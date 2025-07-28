@@ -14,35 +14,29 @@ import java.util.Date;
 public class Intervencija implements Serializable {
 
     private int id;
-    private String zajednica;
-    private String vrstaIntervencije;
     private Date datumPocetka;
     private Date datumZavrsetka;
     private String opis;
     private boolean izvodjac;
+    private double cena;
     private String status;
+    private VrstaIntervencije vrstaIntervencije;
+    private StambenaZajednica stambenaZajednica;
     private int upravnikID;
 
     public Intervencija() {
     }
 
-    public Intervencija(int id, String zajednica, String vrstaIntervencije, Date datumPocetka, Date datumZavrsetka, String opis, boolean izvodjac, String status, int upravnikID) {
+    public Intervencija(int id, Date datumPocetka, Date datumZavrsetka, String opis, boolean izvodjac, double cena, String status, VrstaIntervencije vrstaIntervencije, StambenaZajednica stambenaZajednica, int upravnikID) {
         this.id = id;
-        this.zajednica = zajednica;
-        this.vrstaIntervencije = vrstaIntervencije;
         this.datumPocetka = datumPocetka;
         this.datumZavrsetka = datumZavrsetka;
         this.opis = opis;
         this.izvodjac = izvodjac;
+        this.cena = cena;
         this.status = status;
-        this.upravnikID = upravnikID;
-    }
-
-    public int getUpravnikID() {
-        return upravnikID;
-    }
-
-    public void setUpravnikID(int upravnikID) {
+        this.vrstaIntervencije = vrstaIntervencije;
+        this.stambenaZajednica = stambenaZajednica;
         this.upravnikID = upravnikID;
     }
 
@@ -52,22 +46,6 @@ public class Intervencija implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getZajednica() {
-        return zajednica;
-    }
-
-    public void setZajednica(String zajednica) {
-        this.zajednica = zajednica;
-    }
-
-    public String getVrstaIntervencije() {
-        return vrstaIntervencije;
-    }
-
-    public void setVrstaIntervencije(String vrstaIntervencije) {
-        this.vrstaIntervencije = vrstaIntervencije;
     }
 
     public Date getDatumPocetka() {
@@ -102,6 +80,14 @@ public class Intervencija implements Serializable {
         this.izvodjac = izvodjac;
     }
 
+    public double getCena() {
+        return cena;
+    }
+
+    public void setCena(double cena) {
+        this.cena = cena;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -110,9 +96,33 @@ public class Intervencija implements Serializable {
         this.status = status;
     }
 
+    public VrstaIntervencije getVrstaIntervencije() {
+        return vrstaIntervencije;
+    }
+
+    public void setVrstaIntervencije(VrstaIntervencije vrstaIntervencije) {
+        this.vrstaIntervencije = vrstaIntervencije;
+    }
+
+    public StambenaZajednica getStambenaZajednica() {
+        return stambenaZajednica;
+    }
+
+    public void setStambenaZajednica(StambenaZajednica stambenaZajednica) {
+        this.stambenaZajednica = stambenaZajednica;
+    }
+
+    public int getUpravnikID() {
+        return upravnikID;
+    }
+
+    public void setUpravnikID(int upravnikID) {
+        this.upravnikID = upravnikID;
+    }
+
     @Override
     public String toString() {
-        return "Intervencija{" + "id=" + id + ", zajednica=" + zajednica + ", vrstaIntervencije=" + vrstaIntervencije + ", datumPocetka=" + datumPocetka + ", datumZavrsetka=" + datumZavrsetka + ", opis=" + opis + ", izvodjac=" + izvodjac + ", status=" + status + ", upravnikID=" + upravnikID + '}';
+        return "Intervencija{" + "id=" + id + ", datumPocetka=" + datumPocetka + ", datumZavrsetka=" + datumZavrsetka + ", opis=" + opis + ", izvodjac=" + izvodjac + ", cena=" + cena + ", status=" + status + ", vrstaIntervencije=" + vrstaIntervencije + ", stambenaZajednica=" + stambenaZajednica + ", upravnikID=" + upravnikID + '}';
     }
 
 }
